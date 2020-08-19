@@ -22,6 +22,11 @@ public class Score : MonoBehaviour
     #endregion
 
     private int currentScore = 0;
+    private float timer;
+
+    // TEMP
+    private int bonusScore = 0;
+    private float bonusModifier = 1;
 
     // Start is called before the first frame update
     void Start()
@@ -34,7 +39,32 @@ public class Score : MonoBehaviour
     public void calculateScore()
     {
         int internalScore = 0;
+        calculateBonus();
         currentScore = internalScore;
+    }
+    
+    // TEMP
+    // adds bonus score to current score
+    public void calculateBonus()
+    {
+        currentScore += (int)((float)bonusScore * bonusModifier);
+        // reset the bonuses
+        bonusModifier = 1;
+        bonusScore = 0;
+    }
+
+    // TEMP
+    // add to bonus score
+    public void increaseBonus(int i)
+    {
+        bonusScore += i;
+    }
+
+    // TEMP
+    // add to the bonus modifier
+    public void increaseModifier(float i)
+    {
+        bonusModifier += i;
     }
 
     // TEMP
@@ -44,11 +74,29 @@ public class Score : MonoBehaviour
         currentScore += i;
     }
 
-    // sets the current score back to zero
-    // ensure last score was saved
-    public void resetScore()
+    // TEMP
+    // steps needed to be taken after a successful or bad run
+    public void finishRun(bool success)
     {
-        currentScore = 0;
+        if (success)
+        {
+            stopTimer();
+            calculateScore();
+            saveScore(currentScore);
+        }
+        else
+        {
+            // Do we still want to save score even if they don't finish?
+            // Is there even anything different we want to do?
+        }
+    }
+
+    // TEMP 
+    // steps taken when starting a fresh run
+    public void startRun()
+    {
+        resetScore();
+        initiateTimer();
     }
 
     // retrieves all scores saved in PlayerPrefs
@@ -58,8 +106,27 @@ public class Score : MonoBehaviour
         return arrScore;
     }
 
+    // takes note of the time when the run starts
+    private void initiateTimer()
+    {
+        timer = Time.time;
+    }
+
+    // changes timer to the amount of time elapsed when run finishes
+    private void stopTimer()
+    {
+        timer = Time.time - timer;
+    }
+
+    // sets the current score back to zero
+    // ensure last score was saved
+    private void resetScore()
+    {
+        currentScore = 0;
+    }
+
     // retrieves the highest score saved
-    public int highScore()
+    private int highScore()
     {
         int[] arrScore = retrieveScores();
         int high = 0;
@@ -74,7 +141,7 @@ public class Score : MonoBehaviour
     }
 
     // saves scores into PlayerPrefs
-    public void saveScore(int score)
+    private void saveScore(int score)
     {
         int[] curScores = retrieveScores();
         int[] arrScore = new int[curScores.Length + 1]; // Concern: Max number of scores
