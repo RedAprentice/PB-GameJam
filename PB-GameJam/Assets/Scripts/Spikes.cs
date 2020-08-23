@@ -2,13 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class KillPlane : MonoBehaviour
+public class Spikes : MonoBehaviour
 {
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("player"))
-        {
-            // trigger the death sequence
-        }
+        // Triggers player death
     }
 }
