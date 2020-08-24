@@ -15,7 +15,7 @@ public class DisplayHighscore : MonoBehaviour
     {
         try
         {
-            timeSpan = TimeSpan.FromSeconds(Score.Instance.highScore());
+            timeSpan = TimeSpan.FromSeconds(Score.Instance.bestTime());
         }
         catch
         {
