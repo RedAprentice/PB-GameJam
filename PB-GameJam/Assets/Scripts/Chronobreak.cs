@@ -13,11 +13,11 @@ public class Chronobreak : MonoBehaviour // Might be moved into player later
     /// </summary>
 
     // Queue<Vector3> tenSecPos;
-    ChronoArray positionsSaved;
+    public ChronoArray positionsSaved;
     private float playerZ;
     private float saveTimer;
     private float internalTimer;
-    [SerializeField] private int saveLength = 8, saveInterval = 4, chronoJump = 4;
+    [SerializeField] private int saveLength = 8, saveInterval = 4, chronoJump = 16;
 
     // Start is called before the first frame update
     void Start()
@@ -29,7 +29,7 @@ public class Chronobreak : MonoBehaviour // Might be moved into player later
         //    positionsSaved.addPosition(transform.position);
         //}
         playerZ = transform.position.z;
-        saveTimer = 1 / saveInterval;
+        saveTimer = 1.0f / saveInterval;
         internalTimer = saveTimer;
     }
 
@@ -37,10 +37,11 @@ public class Chronobreak : MonoBehaviour // Might be moved into player later
     void Update()
     {
         // when button press
-        // get position from positionsSaved
-        // check validity
-        // if valid, call chronoActivate and move player
-        // if not, Oopsies
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            triggerBreak();
+        }
+
     }
 
     private void FixedUpdate()
@@ -52,4 +53,25 @@ public class Chronobreak : MonoBehaviour // Might be moved into player later
             internalTimer = saveTimer;
         }
     }
+
+    public bool triggerBreak()
+    {
+        Vector3 chronoPos = positionsSaved.chronoRetrieve();
+        Debug.Log("triggerBreak: We got " + chronoPos);
+        if (chronoPos != new Vector3(0, 0, 999))
+        {
+            // valid
+            transform.position = chronoPos;
+            if (!positionsSaved.chronoActivate())
+            {
+                Debug.Log("chronoActivate Failed");
+            }
+        }
+        else
+        {
+            // not valid
+        }
+        return true;
+    }
+
 }

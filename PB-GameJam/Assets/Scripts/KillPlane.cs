@@ -6,9 +6,17 @@ public class KillPlane : MonoBehaviour
 {
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("player"))
+        if (collision.gameObject.CompareTag("Player"))
         {
-            // trigger the death sequence
+            collision.gameObject.GetComponent<PlayerDeath>().killPlayer();
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            collision.gameObject.GetComponent<PlayerDeath>().killPlayer();
         }
     }
 }
