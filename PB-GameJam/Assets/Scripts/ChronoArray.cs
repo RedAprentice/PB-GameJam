@@ -15,7 +15,7 @@ public class ChronoArray
     {
         arrLength = saveLength * saveInterval;
         head = -1;
-        tail = arrLength;
+        tail = arrLength - 1;
         chronoDefault = head - chronoJump;
         chronoDifference = chronoJump;
 
@@ -35,6 +35,8 @@ public class ChronoArray
             if (tail >= arrLength) tail = 0;
         }
         positionArr[head] = pos;
+        //Debug.Log("Added Position");
+        //Debug.Log("Tail: " + tail + " Head: " + head + " CD: " + chronoDefault);
     }
 
     // call right after chronobreak is finished
@@ -77,6 +79,7 @@ public class ChronoArray
     public Vector3 chronoRetrieve()
     {
         if (chronoDefault >= arrLength || chronoDefault < 0) return new Vector3(0, 0, 999);
+        else if (head == tail) return new Vector3(0, 0, 999);
         else return positionArr[chronoDefault];
     }
 }
