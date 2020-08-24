@@ -20,7 +20,7 @@ public class PlayerDeath : MonoBehaviour
     {
         if (gameObject.GetComponent<Chronobreak>().positionsSaved.tail == gameObject.GetComponent<Chronobreak>().positionsSaved.head)
         {
-            Debug.Log("Oops. We stucked bro");
+            // trigger some kind of game over
         }
         else
         {
