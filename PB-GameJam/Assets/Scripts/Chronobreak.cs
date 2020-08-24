@@ -70,6 +70,7 @@ public class Chronobreak : MonoBehaviour // Might be moved into player later
         else
         {
             // not valid
+
         }
         return true;
     }
