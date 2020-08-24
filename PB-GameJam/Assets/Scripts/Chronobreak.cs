@@ -19,6 +19,9 @@ public class Chronobreak : MonoBehaviour // Might be moved into player later
     private float internalTimer;
     [SerializeField] private int saveLength = 8, saveInterval = 4, chronoJump = 16;
 
+    [SerializeField] private float jumpCooldown = 8.0f; 
+    float jumpStart = 0.0f, jumpFinish = 0.0f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -36,9 +39,11 @@ public class Chronobreak : MonoBehaviour // Might be moved into player later
     // Update is called once per frame
     void Update()
     {
+        jumpStart = Time.time;
         // when button press
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.Space) && jumpStart >= jumpFinish)
         {
+            jumpFinish = jumpStart + jumpCooldown;
             triggerBreak();
         }
 
