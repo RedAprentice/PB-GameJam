@@ -10,6 +10,11 @@ public class ButtonFunctions: MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
+    public void attributionsPage()
+    {
+        SceneManager.LoadScene(3);
+    }
+
     public void mainMenuButton()
     {
         SceneManager.LoadScene(0);
