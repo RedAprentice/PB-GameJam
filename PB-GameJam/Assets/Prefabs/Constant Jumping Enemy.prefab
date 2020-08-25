@@ -31,7 +31,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2207487676854833391}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 23.67, y: 17.921091, z: -7.6700983}
+  m_LocalPosition: {x: 29.77, y: -9.139999, z: 0}
   m_LocalScale: {x: 10, y: 10, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -119,9 +119,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f1d06a93f3c0794392cf0abc7b30463, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isMoving: 0
   horizontalVelocity: {x: 1, y: 0, z: 0}
   enemyMoveSpeed: 5
-  isMoving: 0
   moveBackTimer: 3
   onlyJumping: 1
   jumpTimer: 3

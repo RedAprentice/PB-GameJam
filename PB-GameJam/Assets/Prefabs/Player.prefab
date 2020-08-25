@@ -15,6 +15,8 @@ GameObject:
   - component: {fileID: 3739925296871014128}
   - component: {fileID: 3739925296871014135}
   - component: {fileID: 3739925296871014125}
+  - component: {fileID: 3856285549228792541}
+  - component: {fileID: 6061538274996289637}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -104,7 +106,7 @@ MonoBehaviour:
   m_JumpForce: 400
   m_CrouchSpeed: 0.36
   m_MovementSmoothing: 0.05
-  m_AirControl: 0
+  m_AirControl: 1
   m_WhatIsGround:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -194,6 +196,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 3739925296871014130}
   runSpeed: 40
+--- !u!114 &3856285549228792541
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3739925296871014134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3faaa149aa9a8a64f92ba8c9ac512693, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawn: {fileID: 0}
+--- !u!114 &6061538274996289637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3739925296871014134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9655be6c31e6f194b932b691803e7591, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  saveLength: 8
+  saveInterval: 4
+  chronoJump: 16
+  jumpCooldown: 8
 --- !u!1 &3739925296996147096
 GameObject:
   m_ObjectHideFlags: 0
