@@ -5,10 +5,10 @@ using UnityEngine;
 public class EnemyMovement : MonoBehaviour
 {
     // Moving back and forth variables
+    public bool isMoving = true;
     public Vector3 horizontalVelocity;
     public float enemyMoveSpeed = 10f;
-    public bool isMoving = true;
-    public float moveBackTimer;
+    public float moveBackTimer = 4.0f;
     bool moveBack = false;
 
     // Jumping only
@@ -27,6 +27,10 @@ public class EnemyMovement : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
+        if (isMoving)
+        {
+            InvokeRepeating("MoveBack", moveBackTimer, moveBackTimer);
+        }
     }
 
     // Update is called once per frame
@@ -49,12 +53,6 @@ public class EnemyMovement : MonoBehaviour
 
     void Move()
     {
-        if (Time.time % moveBackTimer == 0 && Time.time != 0)
-        {
-            moveBack = !moveBack;
-            Flip();
-        }
-
         if (moveBack)
         {
             transform.position += (-horizontalVelocity * Time.deltaTime * enemyMoveSpeed);
@@ -63,6 +61,12 @@ public class EnemyMovement : MonoBehaviour
             transform.position += (horizontalVelocity * Time.deltaTime * enemyMoveSpeed);
         
     }
+    void MoveBack()
+    {
+        moveBack = !moveBack;
+        Flip();
+    }
+
 	private void Flip()
 	{
 		// Switch the way the player is labelled as facing.
