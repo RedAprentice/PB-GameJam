@@ -1282,7 +1282,7 @@ MonoBehaviour:
     Jump - Use W.
 
     Chronobreak - Use "spacebar"
-    to go back a few seconds to where your character was.'
+    to go back a few seconds to where your character was on a 4 second cooldown.'
 --- !u!222 &1533665917
 CanvasRenderer:
   m_ObjectHideFlags: 0

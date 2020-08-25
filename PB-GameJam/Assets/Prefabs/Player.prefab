@@ -224,7 +224,7 @@ MonoBehaviour:
   saveLength: 8
   saveInterval: 4
   chronoJump: 16
-  jumpCooldown: 8
+  jumpCooldown: 4
 --- !u!1 &3739925296996147096
 GameObject:
   m_ObjectHideFlags: 0
